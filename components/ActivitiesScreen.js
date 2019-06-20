@@ -113,7 +113,7 @@ class ActivitiesScreen extends Component{
     } else if (!this.state.social) {
       return (
         <View style={styles.meals}>
-          <Text style={styles.welcome}> How Have You Eaten Today?</Text>
+          <Text style={styles.welcome}>How Have You Eaten Today?</Text>
           <Text style={styles.welcome}>Breakfast</Text>
           <ModalSelector
             initValue='Select'

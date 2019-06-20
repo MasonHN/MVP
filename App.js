@@ -6,8 +6,6 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Button, Switch, Picker, FlatList} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import ActivitiesScreen from './components/ActivitiesScreen';
 import ProfileScreen from './components/ProfileScreen';

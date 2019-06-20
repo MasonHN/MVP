@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Button, Switch, Picker, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import axios from 'axios';
 import { ProgressCircle } from 'react-native-svg-charts'
 
@@ -8,15 +8,25 @@ class ProfileScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      
+      overallMood : 0
     }
-    this.getIt = this.getIt.bind(this);
+    
   }
-  getIt() {
-    axios.get('http://localhost:3000/')
+  static navigationOptions = {
+    title: 'Home',
+  };
+  componentDidMount() {
+    axios.get('http://localhost:3000/api/entry')
     .then((response)=> {
-      console.log(response)
+      let mood = 0;
+      for (let i = 0; i < response.data.length; i++) {
+        mood += ((response.data[i].Mental + response.data[i].Emotional + response.data[i].Physical + response.data[i].Medical) / 4)
+      }
+      this.setState({
+        overallMood : mood / response.data.length 
+      }, () => {console.log(this.state.overallMood)})
     })
+    .catch(err => console.log(err))
   }
   render() {
     const {navigate} = this.props.navigation;
@@ -25,12 +35,14 @@ class ProfileScreen extends Component {
         <Button title='Your Routine' onPress={() => navigate('Activities')}/>
         <Button title='Your Moods' onPress={() => navigate('Moods')}/>
         <Button title="Analyze" onPress={() => navigate('Comparisons')}/>
+        <Text style={{ fontSize: 20, textAlign: 'center', marginTop: 100}}>Your Status</Text>
         <ProgressCircle
-                style={ { height: 200, marginTop: 200 } }
-                progress={ 0.7 }
-                progressColor={'green'}
+                style={ { height: 200, marginTop: 50 } }
+                progress={ 0.2 * (this.state.overallMood + 1) }
+                progressColor={'blue'}
                 startAngle={ -Math.PI * 0.8 }
                 endAngle={ Math.PI * 0.8 }
+                strokeWidth={10}
             />
       </View>
     )
