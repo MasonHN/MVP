@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Button, Switch, Picker, FlatList} from 'react-native';
 import axios from 'axios';
-
+import { ProgressCircle } from 'react-native-svg-charts'
 
 
 class ProfileScreen extends Component {
@@ -21,44 +21,20 @@ class ProfileScreen extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Profile
-        </Text>
-        <Button
-          title="Add Daily Activities"
-          onPress={() => navigate('Activities')}
-        />
-        <Button
-          title="Add Daily Moods"
-          onPress={() => navigate('Moods')}
-        />
-        <Button
-          title="Analyze"
-          onPress={() => navigate('Comparisons')}
-        />
+      <View style={{flex : 1, backgroundColor : 'whitesmoke'}}>
+        <Button title='Your Routine' onPress={() => navigate('Activities')}/>
+        <Button title='Your Moods' onPress={() => navigate('Moods')}/>
+        <Button title="Analyze" onPress={() => navigate('Comparisons')}/>
+        <ProgressCircle
+                style={ { height: 200, marginTop: 200 } }
+                progress={ 0.7 }
+                progressColor={'green'}
+                startAngle={ -Math.PI * 0.8 }
+                endAngle={ Math.PI * 0.8 }
+            />
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 export default ProfileScreen;

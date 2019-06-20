@@ -137,28 +137,29 @@ class ActivitiesScreen extends Component{
             onChange={(option)=>{this.setState({snacks : option.label})}} 
           />
           <Button
-            title="Next"
-            onPress={() => {this.setState({social : true})}}
+            title="Submit Todays Routine"
+            onPress={this.submitActions}
           />
         </View>
       )
-    } else {
-      return (
-
-      <View>
-        <Text>Did You have meaningfull social interactions Today?</Text>
-        <ModalSelector
-            initValue='Select'
-            data={[{key : 0, label : 'yes'}, {key: 1, label : 'no'}]}
-            onChange={(option)=>{this.setState({socialInteractions : option.label})}} 
-            />
-        <Button
-          title="Submit Todays Actions"
-          onPress={this.submitActions}
-          />
-      </View>
-    )
     }
+    //  else {
+    //   return (
+
+    //   <View>
+    //     <Text>Did You have meaningfull social interactions Today?</Text>
+    //     <ModalSelector
+    //         initValue='Select'
+    //         data={[{key : 0, label : 'yes'}, {key: 1, label : 'no'}]}
+    //         onChange={(option)=>{this.setState({socialInteractions : option.label})}} 
+    //         />
+    //     <Button
+    //       title="Submit Todays Actions"
+    //       onPress={this.submitActions}
+    //       />
+    //   </View>
+    // )
+    // }
   }
 }
 
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    backgroundColor: 'whitesmoke',
   },
   welcome: {
     fontSize: 20,
