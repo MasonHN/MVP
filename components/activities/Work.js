@@ -5,7 +5,7 @@ import Slider from '@react-native-community/slider'
 const Work = (props) => {
   return (
     <>
-    <Text>Work</Text>
+    <Text>Work?</Text>
     <Text>{props.current} Hours</Text>
       <Slider
         style={{width: 200, height: 40}}

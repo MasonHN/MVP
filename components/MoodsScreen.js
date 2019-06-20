@@ -31,25 +31,26 @@ class MoodsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Emotional</Text>
+        <Text style={styles.welcome}>How Have You Felt Today?</Text>
+        <Text style={styles.welcome}>Emotional</Text>
           <ModalSelector
             initValue='Select'
             data={[{key : 0, label : 'Depressed'}, {key: 1, label : 'Sad'}, {key: 2, label : 'Average'}, {key: 3, label : 'Happy'}, {key: 4, label : 'Complete Bliss'}]}
             onChange={(option)=>{this.setState({emotional : option.label})}} 
           />
-          <Text>Mental</Text>
+          <Text style={styles.welcome}>Mental</Text>
           <ModalSelector
             initValue='Select'
             data={[{key : 0, label : 'Scattered'}, {key: 1, label : 'Unproductive'}, {key: 2, label : 'Marginally Focused'}, {key: 3, label : 'Completely Focused'}, {key: 4, label : 'Zen God'}]}
             onChange={(option)=>{this.setState({mental : option.label})}} 
           />
-          <Text>Physical</Text>
+          <Text style={styles.welcome}>Physical</Text>
           <ModalSelector
             initValue='Select'
             data={[{key : 0, label : 'Awful'}, {key: 1, label : 'Tired'}, {key: 2, label : 'Average'}, {key: 3, label : 'Energetic'}, {key: 4, label : 'God-Like'}]}
             onChange={(option)=>{this.setState({physical : option.label})}} 
           />
-          <Text>Medical</Text>
+          <Text style={styles.welcome}>Medical</Text>
           <ModalSelector
             initValue='Select'
             data={[{key : 0, label : 'Sick - In lots of Pain'}, {key: 1, label : 'Sick - Common Illness'}, {key: 2, label : 'Somewhat Normal'}, {key: 3, label : 'Mostly Normal'}, {key: 4, label : 'Completely Normal'}]}
@@ -67,8 +68,8 @@ class MoodsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    //justifyContent: 'center',
+    //alignItems: 'center',
     backgroundColor: 'whitesmoke',
   },
   welcome: {

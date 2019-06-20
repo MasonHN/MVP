@@ -26,15 +26,19 @@ class ComparisonsScreen extends Component{
       let work = 0;
       let sleep = 0;
       let relaxation = 0;
+      const food = [];
       for (let i = 0; i < response.data.length; i++) {
         exercise += response.data[i].Exercise / 60 ;
         work += response.data[i].Work;
         sleep += response.data[i].Sleep;
         relaxation += response.data[i].Relaxation;
+        food.push(response.data[i].Breakfast, response.data[i].Lunch, response.data[i].Dinner, response.data[i].Snacks);
       }
+      console.log(food);
       this.setState({
-        activities : [exercise, work, sleep, relaxation]
-      })
+        activities : [exercise, work, sleep, relaxation],
+        meals : [food.filter(element => element === 'None').length, food.filter(element => element === 'Unhealthy').length, food.filter(element => element === 'Somewhat Unhealthy').length, food.filter(element=> element === 'Somewhat Healthy').length, food.filter(element => element === 'Healthy').length]
+      }, () => {console.log(this.state)})
     })
     .catch((err) => {
       console.log(err)
@@ -67,7 +71,7 @@ class ComparisonsScreen extends Component{
           </PieChart>
           <PieChart
             style={ { margin: 10, height: 200} }
-            data={ this.state.activities.map((value, index) => ({
+            data={ this.state.meals.map((value, index) => ({
               value,
               svg: {
                 fill: this.state.colors[index],

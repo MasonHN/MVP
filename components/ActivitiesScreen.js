@@ -99,38 +99,40 @@ class ActivitiesScreen extends Component{
     if (!this.state.meals) {
       return (
         <View style={styles.container}>
-        <Exercise current = {this.state.exercise} exercise = {this.exercise}/>
-        <Sleep current = {this.state.sleep} sleep = {this.sleep}/>
-        <Work current = {this.state.work} work = {this.work}/>
-        <Relaxation current = {this.state.relaxation} relaxation = {this.relaxation}/>
-        <Button
-          title="On To Meals"
-          onPress={this.meals}
-          />
+          <Text style={styles.welcome}> How Much Time Have You Spent On</Text>
+          <Exercise current = {this.state.exercise} exercise = {this.exercise}/>
+          <Sleep current = {this.state.sleep} sleep = {this.sleep}/>
+          <Work current = {this.state.work} work = {this.work}/>
+          <Relaxation current = {this.state.relaxation} relaxation = {this.relaxation}/>
+          <Button
+            title="On To Meals"
+            onPress={this.meals}
+            />
         </View>
       )
     } else if (!this.state.social) {
       return (
-        <View style={styles.container}>
-          <Text>Breakfast</Text>
+        <View style={styles.meals}>
+          <Text style={styles.welcome}> How Have You Eaten Today?</Text>
+          <Text style={styles.welcome}>Breakfast</Text>
           <ModalSelector
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({breakfast : option.label})}} 
           />
-          <Text>Lunch</Text>
+          <Text style={styles.welcome}>Lunch</Text>
           <ModalSelector
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({lunch : option.label})}} 
           />
-          <Text>Dinner</Text>
+          <Text style={styles.welcome}>Dinner</Text>
           <ModalSelector
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({dinner : option.label})}} 
           />
-          <Text>Snacks</Text>
+          <Text style={styles.welcome}>Snacks</Text>
           <ModalSelector
             initValue='Select'
             data={data}
@@ -166,20 +168,19 @@ class ActivitiesScreen extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'whitesmoke',
+  },
+  meals: {
+    flex: 1,
     backgroundColor: 'whitesmoke',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
 
 export default ActivitiesScreen;
