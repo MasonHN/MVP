@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { BarChart, Grid, XAxis } from 'react-native-svg-charts'
+import { BarChart, XAxis } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
 import * as scale from 'd3-scale'
 
@@ -19,7 +19,7 @@ class ActivityGraph extends React.Component {
                     x={ x(index) + (bandwidth / 2) }
                     y={ value < CUT_OFF ? y(value) - 10 : y(value) + 15 }
                     fontSize={ 14 }
-                    fill={ 'black' }
+                    fill={ value >= CUT_OFF ? 'white' : 'black' }
                     alignmentBaseline={ 'middle' }
                     textAnchor={ 'middle' }
                 >
@@ -38,7 +38,6 @@ class ActivityGraph extends React.Component {
                     spacing={0.2}
                     gridMin={0}
                 >
-                    <Grid direction={Grid.Direction.HORIZONTAL}/>
                     <Labels/>
                 </BarChart>
                 <XAxis

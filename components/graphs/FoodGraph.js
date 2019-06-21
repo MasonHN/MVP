@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { BarChart, Grid, XAxis } from 'react-native-svg-charts'
+import { BarChart, XAxis } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
 import * as scale from 'd3-scale'
 
@@ -8,7 +8,9 @@ class FoodGraph extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    componentDidMount() {
+        console.log('mounted')
+    }
     render() {
 
         const health = ['None', 'Unhealthy', 'Somewhat Unhealthy', 'Somewhat Healthy', 'Healthy']
@@ -39,7 +41,6 @@ class FoodGraph extends React.Component {
                     spacing={0.2}
                     gridMin={0}
                 >
-                    <Grid direction={Grid.Direction.HORIZONTAL}/>
                     <Labels/>
                 </BarChart>
                 <XAxis

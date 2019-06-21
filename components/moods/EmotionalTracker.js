@@ -7,7 +7,7 @@ const EmotionalTracker = (props) => {
       <>
       <View style={styles.container}>
         <ModalSelector
-            style = {{ marginTop: 10}}
+            style = {{ marginLeft: 50, marginRight: 50, backgroundColor: 'white' }}
             initValue='What Makes Me Feel....?'
             data={[
               {key : 0, label : 'Depressed'},

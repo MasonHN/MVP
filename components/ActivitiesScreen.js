@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Button, Switch, Picker, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import Exercise from './activities/Exercise';
 import Sleep from './activities/Sleep';
 import Work from './activities/Work';
@@ -31,9 +31,7 @@ class ActivitiesScreen extends Component{
       lunch : '',
       dinner : '',
       snacks : '',
-      socialInteractions : '',
-      meals : false,
-      social: false
+      meals : false
     }
     this.exercise = this.exercise.bind(this);
     this.sleep = this.sleep.bind(this);
@@ -42,6 +40,8 @@ class ActivitiesScreen extends Component{
     this.meals = this.meals.bind(this);
     this.submitActions = this.submitActions.bind(this);
   }
+  
+
   exercise(e) {
     this.setState({
       exercise : e
@@ -64,7 +64,7 @@ class ActivitiesScreen extends Component{
   }
   meals() {
     this.setState({
-      meals : true
+      meals : !this.state.meals
     })
   }
   
@@ -76,7 +76,6 @@ class ActivitiesScreen extends Component{
       sleep : this.state.sleep,
       work : this.state.work,
       relaxation : this.state.relaxation,
-      socialInteractions : this.state.socialInteractions,
       breakfast : this.state.breakfast,
       lunch : this.state.lunch,
       dinner : this.state.dinner,
@@ -110,34 +109,42 @@ class ActivitiesScreen extends Component{
             />
         </View>
       )
-    } else if (!this.state.social) {
+    } else {
       return (
         <View style={styles.meals}>
           <Text style={styles.welcome}>How Have You Eaten Today?</Text>
           <Text style={styles.welcome}>Breakfast</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({breakfast : option.label})}} 
           />
           <Text style={styles.welcome}>Lunch</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({lunch : option.label})}} 
           />
           <Text style={styles.welcome}>Dinner</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({dinner : option.label})}} 
           />
           <Text style={styles.welcome}>Snacks</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={data}
             onChange={(option)=>{this.setState({snacks : option.label})}} 
           />
+          <Button
+            title="Back To Activities"
+            onPress={this.meals}
+            />
           <Button
             title="Submit Todays Routine"
             onPress={this.submitActions}
@@ -145,35 +152,20 @@ class ActivitiesScreen extends Component{
         </View>
       )
     }
-    //  else {
-    //   return (
-
-    //   <View>
-    //     <Text>Did You have meaningfull social interactions Today?</Text>
-    //     <ModalSelector
-    //         initValue='Select'
-    //         data={[{key : 0, label : 'yes'}, {key: 1, label : 'no'}]}
-    //         onChange={(option)=>{this.setState({socialInteractions : option.label})}} 
-    //         />
-    //     <Button
-    //       title="Submit Todays Actions"
-    //       onPress={this.submitActions}
-    //       />
-    //   </View>
-    // )
-    // }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'whitesmoke',
   },
   meals: {
     flex: 1,
+    padding: 50,
+    justifyContent: 'center',
     backgroundColor: 'whitesmoke',
   },
   welcome: {

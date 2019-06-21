@@ -16,22 +16,20 @@ class ComparisonsScreen extends Component{
     this.state = {
       activities : [],
       meals : [],
-      colors : ['tomato', 'turquoise', 'teal', 'violet'],
-      mood: '',
-      feeling: 0
+      mood: ''
     }
     this.grabInfo = this.grabInfo.bind(this);
     this.setMood = this.setMood.bind(this);
     this.setFeeling = this.setFeeling.bind(this);
   }
-  grabInfo() {
-    axios.get(`http://localhost:3000/api/entry?${this.state.mood}=${this.state.feeling}`)
+  grabInfo(mood, feeling) {
+    axios.get(`http://ec2-3-14-132-111.us-east-2.compute.amazonaws.com/api/entry?mood=${mood}&feeling=${feeling}`)
     .then((response)=> {
       let exercise = 0;
       let work = 0;
       let sleep = 0;
       let relaxation = 0;
-      const food = [];
+      let food = [];
       for (let i = 0; i < response.data.length; i++) {
         exercise += response.data[i].Exercise / 60 ;
         work += response.data[i].Work;
@@ -48,31 +46,27 @@ class ComparisonsScreen extends Component{
           food.filter(element=> element === 'Somewhat Healthy').length,
           food.filter(element => element === 'Healthy').length
         ]
-      }, () => {console.log(this.state)})
+      })
     })
     .catch((err) => {
       console.log(err)
     })
   }
   setMood(option) {
-    console.log(option.label)
     let label = option.label
     this.setState({
       mood : label
     })
   }
   setFeeling(option) {
-    console.log(option)
-    this.setState({
-      feeling : option.key
-    }, this.grabInfo())
+    this.grabInfo(this.state.mood, option.key);
   }
   render() {
     return (
       <>
       <View style={styles.container}>
         <ModalSelector
-            style = {{ marginTop: 10}}
+            style = {{ marginLeft: 50, marginRight: 50, marginTop: 100, marginBottom: 10, backgroundColor: 'white' }}
             initValue='What Do You Want To Track?'
             data={[
               {key: 0, label: 'Medical'},
@@ -88,14 +82,17 @@ class ComparisonsScreen extends Component{
         <MedicalTracker setFeeling = {this.setFeeling}/> : this.state.mood === 'Emotional' ?
         <EmotionalTracker setFeeling = {this.setFeeling}/> : <MentalTracker setFeeling = {this.setFeeling}/>
         }
+
         {!this.state.activities.length > 0 ?
           null :
           (
           <>
-          <Text style={styles.welcome}>What You Did</Text>
-          <ActivitesGraph data = {this.state.activities}/>
-          <Text style={styles.welcome}>How You Ate</Text>
-          <FoodGraph data = {this.state.meals}/>
+            <View style={{ marginBottom : 100 }} >
+              <Text style={styles.welcome}>What You Did</Text>
+              <ActivitesGraph data = {this.state.activities}/>
+              <Text style={styles.welcome}>How You Ate</Text>
+              <FoodGraph data = {this.state.meals}/>
+            </View>
           </>
           )
         }

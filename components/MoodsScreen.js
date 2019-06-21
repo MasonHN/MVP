@@ -45,6 +45,7 @@ class MoodsScreen extends Component {
         <Text style={styles.welcome}>How Have You Felt Today?</Text>
         <Text style={styles.welcome}>Emotional</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={[
               {key: 0, label : 'Depressed'},
@@ -58,6 +59,7 @@ class MoodsScreen extends Component {
           <Text style={styles.welcome}>Mental</Text>
           <ModalSelector
             initValue='Select'
+            style={{backgroundColor: 'white'}}
             data={[
               {key: 0, label : 'Scattered'},
               {key: 1, label : 'Unproductive'},
@@ -69,6 +71,7 @@ class MoodsScreen extends Component {
           />
           <Text style={styles.welcome}>Physical</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={[
               {key: 0, label : 'Awful'},
@@ -81,6 +84,7 @@ class MoodsScreen extends Component {
           />
           <Text style={styles.welcome}>Medical</Text>
           <ModalSelector
+            style={{backgroundColor: 'white'}}
             initValue='Select'
             data={[
               {key: 0, label : 'Sick - In lots of Pain'},
@@ -103,6 +107,8 @@ class MoodsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding:50,
+    justifyContent: 'center',
     backgroundColor: 'whitesmoke',
   },
   welcome: {
