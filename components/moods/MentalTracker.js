@@ -10,11 +10,11 @@ const MentalTracker = (props) => {
             style = {{ marginLeft: 50, marginRight: 50, backgroundColor: 'white' }}
             initValue='What Makes Me Feel....?'
             data={[
-              {key: 0, label : 'Scattered'},
+              {key: 0, label : 'Frustrated'},
               {key: 1, label : 'Unproductive'},
-              {key: 2, label : 'Marginally Focused'},
-              {key: 3, label : 'Completely Focused'},
-              {key: 4, label : 'Zen God'}
+              {key: 2, label : 'Average'},
+              {key: 3, label : 'Marginally Focused'},
+              {key: 4, label : 'Completely Focused'}
             ]}
             onChange={props.setFeeling}
         />

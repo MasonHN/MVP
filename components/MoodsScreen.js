@@ -61,11 +61,11 @@ class MoodsScreen extends Component {
             initValue='Select'
             style={{backgroundColor: 'white'}}
             data={[
-              {key: 0, label : 'Scattered'},
+              {key: 0, label : 'Frustrated'},
               {key: 1, label : 'Unproductive'},
-              {key: 2, label : 'Marginally Focused'},
-              {key: 3, label : 'Completely Focused'},
-              {key: 4, label : 'Zen God'}
+              {key: 2, label : 'Average'},
+              {key: 3, label : 'Marginally Focused'},
+              {key: 4, label : 'Completely Focused'}
             ]}
             onChange={(option)=>{this.setState({mental : option.key})}} 
           />
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 20,
+    fontWeight: '700',
     textAlign: 'center',
     margin: 10,
   },

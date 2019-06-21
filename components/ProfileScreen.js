@@ -31,14 +31,12 @@ class ProfileScreen extends Component {
     .catch(err => console.log(err))
   }
   render() {
-    const {navigate} = this.props.navigation;
     return (
-      
       <View style={{flex : 1, backgroundColor : 'whitesmoke'}}>
         {/* <Button title='Your Routine' onPress={() => navigate('Activities')}/>
         <Button title='Your Moods' onPress={() => navigate('Moods')}/>
         <Button title="Analyze" onPress={() => navigate('Comparisons')}/> */}
-        <Text style={{ fontSize: 20, textAlign: 'center', marginTop: 200}}>Your Status</Text>
+        <Text style={{ fontSize: 20, fontWeight: '900', textAlign: 'center', marginTop: 200}}>Your Status</Text>
         <ProgressCircle
                 style={ { height: 200, marginTop: 50 } }
                 progress={ 0.2 * (this.state.overallMood + 1) }

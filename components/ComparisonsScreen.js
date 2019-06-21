@@ -9,7 +9,6 @@ import MedicalTracker from './moods/MedicalTracker';
 import ActivitesGraph from './graphs/ActivityGraph';
 import FoodGraph from './graphs/FoodGraph';
 
-
 class ComparisonsScreen extends Component{
   constructor(props) {
     super(props)
@@ -101,6 +100,8 @@ class ComparisonsScreen extends Component{
     )
 }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

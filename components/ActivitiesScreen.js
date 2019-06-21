@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 20,
+    fontWeight: '700',
     textAlign: 'center',
     margin: 10,
   }

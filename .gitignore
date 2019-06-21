@@ -54,3 +54,5 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+/20190411_124846.jpg
