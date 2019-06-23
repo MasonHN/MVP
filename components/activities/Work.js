@@ -1,14 +1,14 @@
-import React from 'react';
-import {View, Text, Picker, StyleSheet} from 'react-native';
-import Slider from '@react-native-community/slider'
+import React from "react";
+import { View, Text, Picker, StyleSheet } from "react-native";
+import Slider from "@react-native-community/slider";
 
-const Work = (props) => {
+const Work = props => {
   return (
     <>
-    <Text>Work?</Text>
-    <Text>{props.current} Hours</Text>
+      <Text>Work?</Text>
+      <Text>{props.current} Hours</Text>
       <Slider
-        style={{width: 200, height: 40}}
+        style={{ width: 200, height: 40 }}
         minimumValue={0}
         maximumValue={16}
         step={1}
@@ -16,7 +16,7 @@ const Work = (props) => {
         onValueChange={props.work}
       />
     </>
-  )
-}
+  );
+};
 
 export default Work;
