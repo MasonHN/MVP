@@ -22,8 +22,11 @@ import ComparisonsScreen from "./components/ComparisonsScreen";
 const DrawerContent = props => {
   return (
     <SafeAreaView
-      forceInset={{ top: "always", horizontal: "never" }}
-      style={{ backgroundColor: "whitesmoke", height: "100%" }}
+      forceInset={{
+        top: "always",
+        horizontal: "never",
+        drawerBackgroundColor: "transparent "
+      }}
     >
       <View
         style={{
@@ -64,7 +67,10 @@ const MainNavigator = createDrawerNavigator(
     Moods: { screen: MoodsScreen },
     Comparisons: { screen: ComparisonsNavigator }
   },
-  { contentComponent: DrawerContent }
+  {
+    contentComponent: DrawerContent,
+    drawerBackgroundColor: "whitesmoke"
+  }
 );
 
 const App = createAppContainer(MainNavigator);
