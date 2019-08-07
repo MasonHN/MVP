@@ -21,7 +21,10 @@ import ComparisonsScreen from "./components/ComparisonsScreen";
 
 const DrawerContent = props => {
   return (
-    <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+    <SafeAreaView
+      forceInset={{ top: "always", horizontal: "never" }}
+      style={{ backgroundColor: "whitesmoke", height: "100%" }}
+    >
       <View
         style={{
           flexDirection: "row",
