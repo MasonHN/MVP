@@ -24,8 +24,7 @@ const DrawerContent = props => {
     <SafeAreaView
       forceInset={{
         top: "always",
-        horizontal: "never",
-        drawerBackgroundColor: "transparent "
+        horizontal: "never"
       }}
     >
       <View
